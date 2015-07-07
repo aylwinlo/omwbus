@@ -7,44 +7,23 @@
 
 var UI = require('ui');
 var ajax = require('ajax');
+var Vector2 = require('vector2');
 
-// Construct URL
-var cityName = 'Toronto';
-var URL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName;
+// Show splash while waiting for data
+var splashWindow = new UI.Window();
 
-// Create a card with title and subtitle
-var card = new UI.Card({
-  title: 'Weather',
-  subtitle: 'Fetching...'
+// Text elt to inform user
+var text = new UI.Text({
+  position: new Vector2(0, 0),
+  size: new Vector2(144,168),
+  text: 'Downloading weather data...',
+  font: 'GOTHIC_28_BOLD',
+  color: 'green',
+  textOverflow: 'wrap',
+  textAlign: 'center',
+  backgroundColor: 'orange'
 });
 
-//Display the card
-card.show();
-
-// Make the request
-ajax(
-  {
-    url: URL,
-    type: 'json'
-  },
-  function(data) {
-    // Success!
-    console.log('Successfully fetched weather data!');
-  
-    // Extract data
-    var location = data.name;
-    var temperature = Math.round(data.main.temp - 273.15) + 'C';
-  
-    // Always upper-case first letter of description
-    var description = data.weather[0].description;
-    description = description.charAt(0).toUpperCase() + description.substring(1);
-
-    // Show to user
-    card.subtitle(location + ', ' + temperature);
-    card.body(description);  
-  },
-  function(error) {
-    // Failure!
-    console.log('Failed fetching weather data: ' + error);
-  }
-);
+// Add to splashWindow and show
+splashWindow.add(text);
+splashWindow.show();
