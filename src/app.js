@@ -18,10 +18,10 @@ var text = new UI.Text({
   size: new Vector2(144,168),
   text: 'Downloading weather data...',
   font: 'GOTHIC_28_BOLD',
-  color: 'black',
+  color: 'green',
   textOverflow: 'wrap',
   textAlign: 'center',
-  backgroundColor: 'white'
+  backgroundColor: 'orange'
 });
 
 // Add to splashWindow and show
