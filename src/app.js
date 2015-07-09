@@ -5,6 +5,7 @@
  *
  */
 
+var xml2js = require('xml2js');
 var UI = require('ui');
 var ajax = require('ajax');
 var Vector2 = require('vector2');
