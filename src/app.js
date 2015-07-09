@@ -28,9 +28,6 @@ ajax(
   function(data) {
     //success:
     statusText = 'successfully fetched data';
-    
-    //extract data
-    var 
   },
   function(error) {
     //failure
